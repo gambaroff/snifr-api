@@ -1,5 +1,5 @@
 development: &default
-  adapter: postgresql
+  adapter: postgis
   database: snifr-api_development
   encoding: utf8
   min_messages: warning
