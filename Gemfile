@@ -9,6 +9,7 @@ gem "honeybadger"
 gem "jquery-rails"
 gem "normalize-rails", "~> 3.0.0"
 gem "pg"
+gem 'activerecord-postgis-adapter'
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.0.0"
