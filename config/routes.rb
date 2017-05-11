@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
-  get "/signup", to: "users#new"
-  resources :users, only: [:new, :create]
+  post 'logins/create'
+  get 'sessions/create'
+  delete 'sessions/destroy'
+
+  resources :users, except: [:show, :create, :destroy, :new]
+  get 'signup' => "logins#new"
+
+  root 'users#index'
 end

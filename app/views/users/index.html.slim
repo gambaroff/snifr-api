@@ -1,0 +1,23 @@
+h1
+  | Users
+
+table
+  thead
+    tr
+      th
+        | Email
+      th
+        | Name
+      th
+        | Actions
+
+  table
+    - @users.each do |user|
+      tr
+        td.email = user.email
+        td.username = user.username
+        td.actions
+          - if current_user.anonymous?
+            = link_to 'Sign in', logins_create_path(user)
+          - else
+            = link_to 'Edit', edit_user_path(user)

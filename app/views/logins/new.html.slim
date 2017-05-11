@@ -1,0 +1,8 @@
+h1 Sign up
+
+.form
+  = form_for(@user, url: logins_create_path(@user)) do |f|
+    = f.label :email
+    = f.text_field :email
+
+    = f.submit "Create my account"

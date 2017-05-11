@@ -1,19 +1,27 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
+  before_action :authenticate_user!, only: [:edit, :update]
+
+  def index
+    @users = User.all
   end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      # Handle successful save
-    else
-      redirect_to new_user_path
-    end
+  def edit
+    @user = User.find(params[:id])
   end
+
+  def update
+    User.find(params[:id]).update!(username: user_params[:username])
+  end
+
   private
 
-  def user_params
-    params.require(:user).permit(:email, :username, :lonlat)
-  end
+    def authenticate_user!
+      if current_user.anonymous?
+        redirect_to root_path, alert: 'Not authenticated'
+      end
+    end
+
+    def user_params
+      params.require(:user).permit(:email, :username, :lonlat)
+    end
 end
