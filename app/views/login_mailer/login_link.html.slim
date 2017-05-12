@@ -1,2 +1,5 @@
-h1 Login#login_link
-p = 'Mail this""'
+h1
+ |  Hi from Snifr
+p = "Click on the following link to sign in into Snifr"
+p
+  = link_to "Sign in ", sessions_create_url(host: "localhost:3000", token: @user.login_token)

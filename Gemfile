@@ -39,6 +39,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 3.5"
+  gem "rails-controller-testing"
 end
 
 group :development, :staging do

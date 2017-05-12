@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 describe UsersController do
-  let(:valid_attributes) do
+  let(:valid_required_attributes) do
+    {
+      email: "user777@example.com",
+    }
+  end
+
+  let(:valid_secondary_attributes) do
     {
       username: "user777",
-      email: "user777@example.com",
       lonlat: 'Point(-71.1043443253471  42.3150676015829)',
     }
   end
@@ -15,21 +20,25 @@ describe UsersController do
     }
   end
 
-  describe "POST create" do
-    context "with valid attributes" do
-      it "creates a new user" do
-        user = lambda do
-          post :create, user: valid_attributes
-        end
-        expect(&user).to change(User, :count).by(1)
-      end
+  describe "GET edit" do
+    it 'serves the edit form' do
+      user = User.new(email: "test@test.com", id: 4)
+      current_user = user
+
+      user.edit
+
     end
+  end
+  describe "PUT update" do
+    context "with valid attributes" do
+      it "updates an existing user user" do
+        user = User.new(valid_required_attributes)
+        expect(user[:username]).to be_nil
 
-    context "with invalid params" do
-      it "redirects to a new user" do
-        post :create, user: invalid_attributes
+        user.update(valid_secondary_attributes)
 
-        expect(response).to redirect_to new_user_path
+        expect(user[:username]).to eq "user777"
+        expect(user[:lonlat].class).to eq RGeo::Geographic::SphericalPointImpl
       end
     end
   end

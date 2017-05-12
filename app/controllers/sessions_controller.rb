@@ -1,4 +1,4 @@
-class SessionsController < ApplicationsController
+class SessionsController < ApplicationController
   # This is the action triggered by login link
   def create
     # Don't sign in user with expired token

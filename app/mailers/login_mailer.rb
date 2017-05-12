@@ -9,9 +9,4 @@ class LoginMailer < ApplicationMailer
     @user = user
     mail to: @user.email, subject: "Welcome"
   end
-  def mailer
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
-  end
 end

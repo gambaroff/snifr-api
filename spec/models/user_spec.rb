@@ -10,10 +10,10 @@ describe User, type: :model do
       expect(user).to_not be_valid
     end
 
-    it "requires point data" do
+    it "doesn't yet require point data" do
       user = build(:user, lonlat: " ")
 
-      expect(user).to_not be_valid
+      expect(user).to be_valid
     end
   end
 end

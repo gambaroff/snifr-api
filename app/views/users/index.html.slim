@@ -18,6 +18,6 @@ table
         td.username = user.username
         td.actions
           - if current_user.anonymous?
-            = link_to 'Sign in', logins_create_path(user)
+            | Check your email to signin
           - else
             = link_to 'Edit', edit_user_path(user)
