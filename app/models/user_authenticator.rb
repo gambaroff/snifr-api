@@ -1,9 +1,9 @@
-class UserAuthenticator
+class UserAuthenticator < Service
   def initialize(user_params)
     @user_params = user_params
   end
 
-  def find_or_create
+  def call
     user = User.find_or_create_by!(email: @user_params[:email]) do |u|
       u.username = "Edit me!"
     end

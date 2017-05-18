@@ -4,7 +4,7 @@ class LoginsController < ApplicationController
   end
 
   def create
-    user = UserAuthenticator.new(login_params).find_or_create
+    user = UserAuthenticator.call(login_params)
     redirect_to root_path, notice: 'Login link sent to your email'
   end
 

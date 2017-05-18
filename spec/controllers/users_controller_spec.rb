@@ -20,15 +20,6 @@ describe UsersController do
     }
   end
 
-  describe "GET edit" do
-    it 'serves the edit form' do
-      user = User.new(email: "test@test.com", id: 4)
-      current_user = user
-
-      user.edit
-
-    end
-  end
   describe "PUT update" do
     context "with valid attributes" do
       it "updates an existing user user" do
