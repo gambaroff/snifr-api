@@ -20,16 +20,15 @@ describe UsersController do
     }
   end
 
-  describe "PUT update" do
+  describe "PUT update/:id" do
     context "with valid attributes" do
       it "updates an existing user user" do
-        user = User.new(valid_required_attributes)
-        expect(user[:username]).to be_nil
+        user = create(:user)
 
-        user.update(valid_secondary_attributes)
+        put :update, id: user, username: "user777"
+        user.reload
 
         expect(user[:username]).to eq "user777"
-        expect(user[:lonlat].class).to eq RGeo::Geographic::SphericalPointImpl
       end
     end
   end
